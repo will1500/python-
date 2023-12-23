@@ -30,7 +30,7 @@ def onLine(line):
         if wasLastAttemptSuccessful:
         	wasLastAttemptSuccessful = False
         else:
-            print '[+] ssh login attempt failed  %s' % time.strftime("%m/%d/%y %H:%M:%S")
+            print '[+] SSH TEst login attempt failed  %s' % time.strftime("%m/%d/%y %H:%M:%S")
 
     
 for line in tailer.follow(openfile):
