@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#test
 
 set -e
 set -x
