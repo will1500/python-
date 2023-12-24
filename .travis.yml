@@ -21,11 +21,14 @@ matrix:
     - python: "nightly"
 
 install:
-  - pyenv versions  # Lists available Python versions
-  - pyenv global 3.10  # Set global Python version to 3.10
-  - python --version  # Confirm Python version
+  - sudo add-apt-repository ppa:deadsnakes/ppa -y
+  - sudo apt-get update
+  - sudo apt-get install python3.10 python3.10-dev python3.10-venv -y
+  - pyenv global 3.10
+  - python --version
   - pip install pipenv --upgrade-strategy=only-if-needed
-  - pipenv --python 3.10 install --dev  # Explicitly specify Python version for Pipenv
+  - pipenv install --dev
+
 
 script:
   - python --version  # Confirm Python version again
