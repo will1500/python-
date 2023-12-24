@@ -20,6 +20,9 @@ cache:
     - $HOME/.cache/pipenv
 
 env:
+  global:
+    - CODECOV_TOKEN=696d411a-78b6-4830-9c53-f877120b8478
+
   - PIPENV_IGNORE_VIRTUALENVS=1
 
 install:
@@ -27,7 +30,6 @@ install:
   - pip install -r requirements.txt
   - pip install pipenv --upgrade-strategy=only-if-needed
   - pipenv install --dev
-
 
 script:
   - python --version  # Confirm Python version again
