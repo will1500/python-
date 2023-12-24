@@ -23,9 +23,10 @@ env:
   - PIPENV_IGNORE_VIRTUALENVS=1
 
 install:
-  - python --version
+  - pip install pytest-cov
   - pip install pipenv --upgrade-strategy=only-if-needed
   - pipenv install --dev
+  
 
 script:
   - python --version  # Confirm Python version again
