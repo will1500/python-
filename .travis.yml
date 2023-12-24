@@ -1,20 +1,6 @@
-dist: bionic  # You can try changing this to bionic if xenial doesn't work
+dist: bionic
 
 language: python
-addons:
-  postgresql: "10"  # Replace with your desired version
-  apt:
-    sources:
-      - sourceline: 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main'
-        key_url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
-    packages:
-      - postgresql-client-10  # Replace with your desired version
-
-
-cache:
-  pip: true
-  directories:
-    - $HOME/.cache/pipenv
 
 python:
   - "3.10"
@@ -22,22 +8,24 @@ python:
   - "3.8"
   - "nightly"
 
+services:
+  - postgresql
+
+addons:
+  postgresql: "10"  # Specify the version of PostgreSQL
+
+cache:
+  pip: true
+  directories:
+    - $HOME/.cache/pipenv
+
 env:
   - PIPENV_IGNORE_VIRTUALENVS=1
 
-matrix:
-  allow_failures:
-    - python: "nightly"
-
 install:
-  - sudo add-apt-repository ppa:deadsnakes/ppa -y
-  - sudo apt-get update
-  - sudo apt-get install python3.10 python3.10-dev python3.10-venv -y
-  - pyenv global 3.10
   - python --version
   - pip install pipenv --upgrade-strategy=only-if-needed
   - pipenv install --dev
-
 
 script:
   - python --version  # Confirm Python version again
