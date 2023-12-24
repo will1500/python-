@@ -8,9 +8,9 @@ cache:
     - $HOME/.cache/pipenv
 
 python:
-  - "3.7"
-  - "3.8"
+  - "3.10"
   - "3.9"
+  - "3.8"
   - "nightly"
 
 env:
@@ -22,9 +22,10 @@ matrix:
 
 install:
   - pip install pipenv --upgrade-strategy=only-if-needed
-  - PIPENV_PYTHON=$TRAVIS_PYTHON_VERSION pipenv install --dev
+  - pyenv global $TRAVIS_PYTHON_VERSION
+  - python --version
+  - pipenv install --dev --verbose
 
-script:
   - python --version  # This command prints the current Python version
   - pip list
   - bash scripts/test.sh
