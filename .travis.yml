@@ -1,6 +1,15 @@
 dist: bionic  # You can try changing this to bionic if xenial doesn't work
 
 language: python
+addons:
+  postgresql: "10"  # Replace with your desired version
+  apt:
+    sources:
+      - sourceline: 'deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main'
+        key_url: 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+    packages:
+      - postgresql-client-10  # Replace with your desired version
+
 
 cache:
   pip: true
