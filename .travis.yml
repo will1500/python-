@@ -6,12 +6,15 @@ cache:
   pip: true
   directories:
     - $HOME/.cache/pipenv
-
 python:
-  - "3.6"
   - "3.7"
   - "3.8"
+  - "3.9"
   - "nightly"
+
+env:
+  - PIPENV_IGNORE_VIRTUALENVS=1
+
 
 matrix:
   allow_failures:
@@ -26,3 +29,4 @@ script:
 
 after_script:
   - bash <(curl -s https://codecov.io/bash)
+
