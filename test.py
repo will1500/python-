@@ -3,6 +3,7 @@ from my_sum import sum  # Corrected import statement
 from fractions import Fraction
 
 class TestSum(unittest.TestCase):
+
     def test_list_int(self):
         """
         Test that it can sum a list of integers
@@ -22,8 +23,7 @@ class TestSum(unittest.TestCase):
     def test_bad_type(self):
         data = "banana"
         with self.assertRaises(TypeError):
-            result = sum(data)
-
+            sum(data)
 
 if __name__ == '__main__':
     unittest.main()
