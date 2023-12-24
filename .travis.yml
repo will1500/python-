@@ -1,4 +1,4 @@
-dist: xenial  # You can try changing this to bionic if xenial doesn't work
+dist: bionic  # You can try changing this to bionic if xenial doesn't work
 
 language: python
 
