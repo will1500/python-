@@ -12,18 +12,17 @@ class TestSum(unittest.TestCase):
         self.assertEqual(result, 6)
 
     def test_list_fraction(self):
-    	"""
-    	Test that it can sum a list of fractions
-    	"""
-    	data = [Fraction(1,4), Fraction(1,4), Fraction(2,5)]
-    	result = sum(data)
-    	self.assertEqual(result, 1)
+        """
+        Test that it can sum a list of fractions
+        """
+        data = [Fraction(1, 4), Fraction(1, 4), Fraction(2, 5)]
+        result = sum(data)
+        self.assertEqual(result, Fraction(9, 10))  # Corrected the expected result
 
     def test_bad_type(self):
-    	data = "banana"
-    	with self.assertRaises(TypeError):
-    		result = sum(data)
-
+        data = "banana"
+        with self.assertRaises(TypeError):
+            result = sum(data)
 
 if __name__ == '__main__':
     unittest.main()
