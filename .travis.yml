@@ -1,4 +1,4 @@
-dist: xenial
+dist: xenial  # You can try changing this to bionic if xenial doesn't work
 
 language: python
 
@@ -21,14 +21,16 @@ matrix:
     - python: "nightly"
 
 install:
+  - pyenv versions  # Lists available Python versions
+  - pyenv global 3.10  # Set global Python version to 3.10
+  - python --version  # Confirm Python version
   - pip install pipenv --upgrade-strategy=only-if-needed
-  - pyenv global $TRAVIS_PYTHON_VERSION
-  - python --version
-  - pipenv install --dev --verbose
+  - pipenv --python 3.10 install --dev  # Explicitly specify Python version for Pipenv
 
-  - python --version  # This command prints the current Python version
-  - pip list
-  - bash scripts/test.sh
+script:
+  - python --version  # Confirm Python version again
+  - pip list  # List installed packages for debugging
+  - bash scripts/test.sh  # Run your test script
 
 after_script:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)  # Post-test actions like codecov
